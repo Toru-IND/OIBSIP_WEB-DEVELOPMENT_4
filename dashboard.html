@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="dashboard-container">
+    <div class="dashboard-card">
+      <h2>Welcome to the Secure Page!</h2>
+      <p class="username-display">Hello, <span id="userDisplay"></span> 👋</p>
+
+      <div class="dashboard-content">
+        <h3>Account Overview</h3>
+        <ul>
+          <li>Last Login: <strong>Just now</strong></li>
+          <li>Status: <strong>Active</strong></li>
+        </ul>
+      </div>
+
+      <button class="logout-button" onclick="logout()">Logout</button>
+    </div>
+  </div>
+
+  <script>
+    // Redirect if not logged in
+    const user = localStorage.getItem("loggedInUser");
+    if (!user) {
+      window.location.href = "index.html";
+    } else {
+      document.getElementById("userDisplay").textContent = user;
+    }
+
+    function logout() {
+      localStorage.removeItem("loggedInUser");
+      window.location.href = "index.html";
+    }
+  </script>
+</body>
+</html>
